@@ -1,0 +1,127 @@
+:root {
+  --card-bg:      rgba(18, 18, 30, 0.85);
+  --card-border:  rgba(255, 255, 255, 0.07);
+  --card-shadow:  0 2px 12px rgba(0, 0, 0, 0.4);
+  --card-hover-shadow: 0 20px 40px rgba(99, 102, 241, 0.25), 0 8px 16px rgba(0, 0, 0, 0.4);
+  --name-color:   #f1f5f9;
+  --dept-color:   #64748b;
+}
+
+[data-theme="light"] {
+  --card-bg:      rgba(255, 255, 255, 0.85);
+  --card-border:  rgba(255, 255, 255, 0.95);
+  --card-shadow:  0 2px 12px rgba(15, 23, 42, 0.06);
+  --card-hover-shadow: 0 20px 40px rgba(99, 102, 241, 0.18), 0 8px 16px rgba(15, 23, 42, 0.08);
+  --name-color:   #0f172a;
+  --dept-color:   #94a3b8;
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  padding: 28px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.22s ease,
+              background 0.3s ease,
+              border-color 0.3s ease;
+  box-shadow: var(--card-shadow);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.card:hover,
+.card:focus {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.card:hover::before,
+.card:focus::before {
+  opacity: 1;
+}
+
+.avatarWrap {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.avatarRing {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #d946ef);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.card:hover .avatarRing,
+.card:focus .avatarRing {
+  opacity: 1;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  display: block;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--name-color);
+  margin: 0;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+
+.role {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.dept {
+  font-size: 12px;
+  color: var(--dept-color);
+  margin: 0;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}

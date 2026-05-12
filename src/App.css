@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── CSS Variables: Dark (default) ── */
+:root {
+  --bg-page:          #0a0a0f;
+  --bg-controls:      rgba(255, 255, 255, 0.04);
+  --border-controls:  rgba(255, 255, 255, 0.08);
+  --shadow-controls:  0 4px 24px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.05);
+
+  --header-bg:        linear-gradient(135deg, #1a0533 0%, #0f0a1e 50%, #0d1a33 100%);
+  --header-border:    rgba(139, 92, 246, 0.2);
+  --header-glow:      rgba(139, 92, 246, 0.18);
+
+  --text-primary:     #f1f5f9;
+  --text-secondary:   rgba(148, 163, 184, 0.7);
+  --text-muted:       #475569;
+  --text-accent:      rgba(167, 139, 250, 0.75);
+
+  --toggle-bg:        rgba(255,255,255,0.08);
+  --toggle-border:    rgba(255,255,255,0.14);
+  --toggle-color:     #a78bfa;
+  --toggle-hover-bg:  rgba(167,139,250,0.15);
+}
+
+/* ── CSS Variables: Light ── */
+[data-theme="light"] {
+  --bg-page:          #f0f4ff;
+  --bg-controls:      rgba(255, 255, 255, 0.85);
+  --border-controls:  rgba(255, 255, 255, 0.95);
+  --shadow-controls:  0 4px 24px rgba(79, 70, 229, 0.08);
+
+  --header-bg:        linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #9333ea 100%);
+  --header-border:    transparent;
+  --header-glow:      rgba(255,255,255,0.12);
+
+  --text-primary:     #fff;
+  --text-secondary:   rgba(255, 255, 255, 0.6);
+  --text-muted:       #94a3b8;
+  --text-accent:      rgba(255, 255, 255, 0.65);
+
+  --toggle-bg:        rgba(255,255,255,0.2);
+  --toggle-border:    rgba(255,255,255,0.3);
+  --toggle-color:     #fff;
+  --toggle-hover-bg:  rgba(255,255,255,0.32);
+}
+
+/* Smooth theme transition — only active during the switch, not on hover/focus */
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease !important;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.header {
+  background: var(--header-bg);
+  padding: 36px 48px 32px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--header-border);
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, var(--header-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.headerInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.titleAccent {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* ── Theme toggle button ── */
+.themeToggle {
+  background: var(--toggle-bg);
+  border: 1px solid var(--toggle-border);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  color: var(--toggle-color);
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.themeToggle:hover {
+  background: var(--toggle-hover-bg);
+  transform: rotate(20deg) scale(1.08);
+}
+
+/* ── Main ── */
+.main {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 36px 28px 60px;
+}
+
+/* ── Controls bar ── */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: var(--bg-controls);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-controls);
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow-controls);
+  margin-bottom: 28px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* ── Results info ── */
+.results-info {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  padding-left: 2px;
+}

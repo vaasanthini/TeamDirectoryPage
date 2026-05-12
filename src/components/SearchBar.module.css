@@ -1,0 +1,85 @@
+:root {
+  --sb-bg:           rgba(255, 255, 255, 0.05);
+  --sb-border:       rgba(255, 255, 255, 0.08);
+  --sb-text:         #e2e8f0;
+  --sb-placeholder:  #475569;
+  --sb-clear-bg:     rgba(255, 255, 255, 0.08);
+  --sb-clear-hover:  rgba(255, 255, 255, 0.14);
+  --sb-clear-color:  #64748b;
+  --sb-clear-hover-color: #94a3b8;
+}
+
+[data-theme="light"] {
+  --sb-bg:           #fff;
+  --sb-border:       #e2e8f0;
+  --sb-text:         #0f172a;
+  --sb-placeholder:  #94a3b8;
+  --sb-clear-bg:     #f1f5f9;
+  --sb-clear-hover:  #e2e8f0;
+  --sb-clear-color:  #94a3b8;
+  --sb-clear-hover-color: #475569;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 380px;
+}
+
+.icon {
+  position: absolute;
+  left: 14px;
+  font-size: 15px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+}
+
+.input {
+  width: 100%;
+  padding: 11px 38px 11px 40px;
+  border: 1.5px solid var(--sb-border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--sb-bg);
+  color: var(--sb-text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  font-weight: 400;
+}
+
+.input::placeholder {
+  color: var(--sb-placeholder);
+}
+
+.input:focus {
+  border-color: #7c3aed;
+  background: rgba(124, 58, 237, 0.06);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+.clear {
+  position: absolute;
+  right: 10px;
+  background: var(--sb-clear-bg);
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  color: var(--sb-clear-color);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+}
+
+.clear:hover {
+  background: var(--sb-clear-hover);
+  color: var(--sb-clear-hover-color);
+}

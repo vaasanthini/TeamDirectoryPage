@@ -1,0 +1,60 @@
+:root {
+  --rf-bg:           rgba(255, 255, 255, 0.05);
+  --rf-border:       rgba(255, 255, 255, 0.1);
+  --rf-text:         #94a3b8;
+  --rf-hover-bg:     rgba(124, 58, 237, 0.1);
+  --rf-hover-border: #7c3aed;
+  --rf-hover-text:   #a78bfa;
+}
+
+[data-theme="light"] {
+  --rf-bg:           #fff;
+  --rf-border:       #e2e8f0;
+  --rf-text:         #64748b;
+  --rf-hover-bg:     #faf5ff;
+  --rf-hover-border: #7c3aed;
+  --rf-hover-text:   #7c3aed;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn {
+  padding: 8px 18px;
+  border: 1.5px solid var(--rf-border);
+  border-radius: 100px;
+  background: var(--rf-bg);
+  color: var(--rf-text);
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  border-color: var(--rf-hover-border);
+  color: var(--rf-hover-text);
+  background: var(--rf-hover-bg);
+  transform: translateY(-1px);
+}
+
+.active {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+}
+
+.active:hover {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.5);
+  transform: translateY(-1px);
+}
